@@ -42,6 +42,8 @@ const TaskForm = () => {
     }
 
     if (editTaskId) {
+      console.log(editTaskId, typeof editTaskId);
+
       const data = todoData.map((item) =>
         item.id === editTaskId
           ? { ...item, task: taskName, priority: selectedOption }
@@ -51,6 +53,8 @@ const TaskForm = () => {
       // console.log(data);
 
       setTodoData(data);
+
+      setEditTaskId("");
     } else {
       setTodoData((prev) => {
         return [
@@ -106,7 +110,7 @@ const TaskForm = () => {
               ))}
             </select>
             <button type="submit" className="submitBtn">
-              Add
+              {editTaskId ? "Update" : "Add"}
             </button>
           </form>
         </div>
