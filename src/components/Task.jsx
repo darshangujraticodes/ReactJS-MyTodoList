@@ -156,7 +156,7 @@ const Task = () => {
                   <div className="d-flex justify-content-center">
                     <button
                       disabled={item.isComplete}
-                      onClick={() => setEditTaskId(id)}
+                      onClick={() => setEditTaskId(item.id)}
                       className={`iconBtn ${
                         item.isComplete ? " statustaskDone " : " taskPending "
                       } `}
