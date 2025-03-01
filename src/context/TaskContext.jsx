@@ -7,15 +7,16 @@ const taskContextProvider = ({ children }) => {
 
   const [checkedTask, setCheckedTask] = useState([]);
 
-  const [showUpdateBox, setShowUpdateBox] = useState(false);
+  const [editTaskId, setEditTaskId] = useState(0);
 
   const data = {
     todoData,
     setTodoData,
-    showUpdateBox,
-    setShowUpdateBox,
+
     checkedTask,
     setCheckedTask,
+    editTaskId,
+    setEditTaskId,
   };
 
   useEffect(() => {

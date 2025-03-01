@@ -1,4 +1,4 @@
-import React, { useContext, useId, useState } from "react";
+import React, { useContext, useEffect, useId, useState } from "react";
 import { taskContext } from "../context/TaskContext";
 import { toast } from "react-toastify";
 
@@ -7,7 +7,17 @@ const TaskForm = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const options = ["Critical", "High", "Medium", "Low"];
 
-  const { todoData, setTodoData, checkedTask } = useContext(taskContext);
+  const { todoData, setTodoData, checkedTask, editTaskId, setEditTaskId } =
+    useContext(taskContext);
+
+  useEffect(() => {
+    if (editTaskId) {
+      const editInfo = todoData.filter((item) => item.id === editTaskId);
+
+      setTaskName(editInfo[0].task);
+      setSelectedOption(editInfo[0].priority);
+    }
+  }, [editTaskId]);
 
   const selectPriorityHandle = (e) => {
     setSelectedOption(e.target.value);
@@ -31,19 +41,31 @@ const TaskForm = () => {
       return;
     }
 
-    setTodoData((prev) => {
-      return [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          task: taskName,
-          isComplete: false,
-          priority: selectedOption,
-        },
-      ];
-    });
+    if (editTaskId) {
+      const data = todoData.map((item) =>
+        item.id === editTaskId
+          ? { ...item, task: taskName, priority: selectedOption }
+          : item
+      );
 
-    toast.success("Task Added in Todo List!", {});
+      // console.log(data);
+
+      setTodoData(data);
+    } else {
+      setTodoData((prev) => {
+        return [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            task: taskName,
+            isComplete: false,
+            priority: selectedOption,
+          },
+        ];
+      });
+
+      toast.success("Task Added in Todo List!", {});
+    }
 
     setTaskName("");
     setSelectedOption("");

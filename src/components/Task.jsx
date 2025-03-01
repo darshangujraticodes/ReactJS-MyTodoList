@@ -1,23 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { taskContext } from "../context/TaskContext";
-import EditTaskForm from "./EditTaskForm";
 import { toast } from "react-toastify";
 
 const Task = () => {
-  const {
-    todoData,
-    setTodoData,
-    showUpdateBox,
-    setShowUpdateBox,
-    checkedTask,
-    setCheckedTask,
-  } = useContext(taskContext);
+  const { todoData, setTodoData, checkedTask, setCheckedTask, setEditTaskId } =
+    useContext(taskContext);
 
   // console.log("task page", todoData);
 
   const [checkBoxID, setCheckBoxID] = useState(0);
-
-  const [editTaskId, setEditTaskId] = useState(0);
 
   useEffect(() => {
     const taskId = checkBoxID;
@@ -47,13 +38,6 @@ const Task = () => {
     toast.success("Task Deleted!", {});
   };
 
-  // edit handle opr
-  const editHandle = (id) => {
-    setShowUpdateBox(true);
-
-    setEditTaskId(id);
-  };
-
   // checkbox handle opr
   const checkedHandle = (event, taskId) => {
     const checked = event.target.checked;
@@ -66,8 +50,11 @@ const Task = () => {
     // console.log(checkedTask, checked, taskId);
   };
 
+  // sorting todo list
   const sortTaskHandle = () => {
     // console.log(todoData);
+
+    if (todoData.length < 1) toast.error("Task List is Empty!", {});
 
     const fetch1 = todoData.filter((item) => item.priority === "Critical");
     const fetch2 = todoData.filter((item) => item.priority === "High");
@@ -82,10 +69,13 @@ const Task = () => {
   };
 
   const deleteAllTodo = () => {
-    setCheckedTask([]);
-    setTodoData([]);
+    if (todoData.length < 1) toast.error("Task List is Already Empty!", {});
+    else {
+      setCheckedTask([]);
+      setTodoData([]);
 
-    toast.success("New Todo List is created!", {});
+      toast.success("New Todo List is created!", {});
+    }
   };
 
   const getPriorityClass = (status) => {
@@ -113,9 +103,6 @@ const Task = () => {
               New Todo
             </button>
           </div>
-        </div>
-        <div>
-          {showUpdateBox ? <EditTaskForm editTaskId={editTaskId} /> : null}
         </div>
 
         <table>
@@ -169,7 +156,7 @@ const Task = () => {
                   <div className="d-flex justify-content-center">
                     <button
                       disabled={item.isComplete}
-                      onClick={() => editHandle(item.id)}
+                      onClick={() => setEditTaskId(id)}
                       className={`iconBtn ${
                         item.isComplete ? " statustaskDone " : " taskPending "
                       } `}
