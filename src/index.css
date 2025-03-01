@@ -134,3 +134,9 @@ td {
 .low {
   background-color: gray;
 }
+
+.coder {
+  color: #fff;
+  text-decoration: none;
+  margin: 20px;
+}
