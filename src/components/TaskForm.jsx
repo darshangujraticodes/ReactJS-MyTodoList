@@ -55,6 +55,8 @@ const TaskForm = () => {
       setTodoData(data);
 
       setEditTaskId("");
+
+      toast.success("Task Updated in Todo List!", {});
     } else {
       setTodoData((prev) => {
         return [
