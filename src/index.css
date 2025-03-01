@@ -1,0 +1,136 @@
+body {
+  color: #f5f5f5;
+  background: #262626;
+}
+
+.submitBtn {
+  background-color: #75dafb;
+  color: #000;
+  border: none;
+  margin: 10px;
+  border-radius: 5px;
+  width: 95px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.inputText {
+  border-radius: 10px;
+  padding: 5px 8px;
+  font-size: 20px;
+}
+
+.col1 {
+  width: 55px;
+}
+
+.col2 {
+  width: 75px;
+}
+
+.col3 {
+  width: 400px;
+}
+
+.col4 {
+  width: 90px;
+  text-align: center;
+}
+
+.col5 {
+  width: 125px;
+}
+
+thead {
+  border-bottom: 1px solid #fff;
+  height: 50px;
+}
+
+.oprIcon {
+  margin: 0 10px;
+  width: 20px;
+  height: 20px;
+}
+
+tbody {
+  margin-top: 10px;
+  height: 50px;
+}
+
+td {
+  padding-top: 15px;
+}
+
+.todoTaskTitle {
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+.taskTitle {
+  font-size: 20px;
+  margin-bottom: 0 !important;
+}
+
+.taskDone {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.statustaskDone {
+  opacity: 0.5;
+}
+
+.taskPending {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.iconBtn {
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+.updateBtn {
+  background-color: #75dafb;
+  color: #000;
+  border: none;
+  margin: 10px;
+  border-radius: 5px;
+  width: 95px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.selectPrority {
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.priorityText {
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  padding: 3px 5px;
+  font-weight: 500;
+}
+
+.critical {
+  background-color: #ce4141;
+}
+
+.high {
+  /* background-color: #008577; */
+  background-color: #ce7b05;
+  /* background-color: #eca027; */
+}
+
+.medium {
+  background-color: #6442ac;
+}
+.low {
+  background-color: gray;
+}
