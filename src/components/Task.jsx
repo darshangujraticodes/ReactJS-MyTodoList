@@ -91,7 +91,7 @@ const Task = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center mt-3">
+    <div className="d-flex justify-content-center mt-3 mb-5 pb-5">
       <div>
         <div className="">
           <div className="btnWrap">
