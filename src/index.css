@@ -124,7 +124,7 @@ td {
 
 .high {
   /* background-color: #008577; */
-  background-color: #ce7b05;
+  background-color: #ff7f00;
   /* background-color: #eca027; */
 }
 
@@ -139,4 +139,10 @@ td {
   color: #fff;
   text-decoration: none;
   margin: 20px;
+}
+
+.links {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 10px !important;
 }
